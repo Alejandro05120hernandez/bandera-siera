@@ -8955,15 +8955,12 @@ main > section.scroll-snap-short{
    showcase de UX, pero el fondo de cada sección permanece completamente fijo. */
 main > section.scroll-live-stage:not(.hero) > .wrap{
   transform-origin:center 38% !important;
-  filter:
-    blur(calc((1 - var(--stage-glow, 1)) * 2.6px))
-    saturate(calc(.94 + (var(--stage-glow, 1) * .06))) !important;
-  transition:filter .08s linear !important;
+  filter:none !important;
 }
 
-/* El capítulo que cruza el centro del viewport queda totalmente nítido. */
+/* El contenido permanece completamente nítido durante todo el scroll. */
 main > section.scroll-live-stage.is-scroll-current:not(.hero) > .wrap{
-  filter:blur(0) saturate(1) !important;
+  filter:none !important;
 }
 
 /* No desplazamos lateralmente los encabezados: el efecto se concentra
@@ -9110,6 +9107,183 @@ main > section.scroll-live-stage .agenda-header{
     filter:none !important;
     transform:none !important;
     opacity:1 !important;
+  }
+}
+
+/* ============================================================
+   CORRECCIÓN DEFINITIVA DEL MAPA LEAFLET
+   SOLO afecta al mapa y a su estabilidad.
+   No modifica contenido, diseño, ruta, colores ni estructura.
+   ============================================================ */
+
+/* Evita el conflicto entre el scroll cinemático y Leaflet */
+#recorrido.scroll-live-stage > .wrap{
+  transform: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+  will-change: auto !important;
+  backface-visibility: visible !important;
+  -webkit-backface-visibility: visible !important;
+}
+
+/* Marco del mapa */
+#recorrido .route-map-frame{
+  position: relative;
+  z-index: 1;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+#recorrido .route-map-wrap{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Contenedor principal del mapa */
+#routeMap{
+  position: relative !important;
+  width: 100% !important;
+  height: 460px;
+  min-height: 360px;
+  display: block;
+  overflow: hidden;
+  isolation: isolate;
+  transform: none !important;
+  filter: none !important;
+  backface-visibility: visible !important;
+  -webkit-backface-visibility: visible !important;
+}
+
+/* Sistema de capas de Leaflet */
+#routeMap .leaflet-map-pane{
+  z-index: 400 !important;
+}
+
+#routeMap .leaflet-tile-pane{
+  z-index: 200 !important;
+}
+
+#routeMap .leaflet-overlay-pane{
+  z-index: 400 !important;
+}
+
+#routeMap .leaflet-shadow-pane{
+  z-index: 500 !important;
+}
+
+#routeMap .leaflet-marker-pane{
+  z-index: 600 !important;
+}
+
+#routeMap .leaflet-tooltip-pane{
+  z-index: 650 !important;
+}
+
+#routeMap .leaflet-popup-pane{
+  z-index: 700 !important;
+}
+
+/* Controles Leaflet */
+#routeMap .leaflet-control-container{
+  position: static !important;
+  z-index: auto !important;
+}
+
+#routeMap .leaflet-control{
+  position: relative !important;
+  z-index: 800 !important;
+}
+
+#routeMap .leaflet-top,
+#routeMap .leaflet-bottom{
+  z-index: 1000 !important;
+}
+
+/* Evita que los tiles hereden max-width:100% del CSS general */
+#routeMap .leaflet-tile{
+  max-width: none !important;
+  max-height: none !important;
+  width: 256px;
+  height: 256px;
+  padding: 0 !important;
+  margin: 0 !important;
+  transform-origin: 0 0;
+}
+
+#routeMap .leaflet-marker-icon,
+#routeMap .leaflet-marker-shadow{
+  max-width: none !important;
+}
+
+#routeMap .leaflet-map-pane canvas,
+#routeMap .leaflet-map-pane svg{
+  max-width: none !important;
+}
+
+/* Popups */
+#routeMap .leaflet-popup{
+  z-index: 700 !important;
+}
+
+#routeMap .leaflet-popup-content-wrapper{
+  background: var(--hueso);
+  color: var(--tinta);
+  overflow: hidden;
+}
+
+#routeMap .leaflet-popup-content{
+  margin: 0 !important;
+}
+
+#routeMap .leaflet-popup-tip{
+  background: var(--hueso);
+}
+
+/* Controles de zoom */
+#routeMap .leaflet-control-zoom{
+  z-index: 1000 !important;
+}
+
+#routeMap .leaflet-control-zoom a{
+  color: var(--verde-dark) !important;
+  background: rgba(247,248,248,.97) !important;
+}
+
+#routeMap .leaflet-control-zoom a:hover{
+  color: var(--hueso) !important;
+  background: var(--verde) !important;
+}
+
+/* Interactividad */
+#routeMap,
+#routeMap .leaflet-pane,
+#routeMap .leaflet-map-pane,
+#routeMap .leaflet-marker-pane{
+  pointer-events: auto;
+}
+
+#routeMap .leaflet-tile-pane{
+  pointer-events: none;
+}
+
+/* Estado cargado */
+#routeMap.route-map-ready{
+  background: var(--hueso-2) !important;
+}
+
+/* Móvil */
+@media (max-width: 700px){
+  #routeMap{
+    height: 340px;
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 420px){
+  #routeMap{
+    height: 300px;
+    min-height: 300px;
   }
 }
 
