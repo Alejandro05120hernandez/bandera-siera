@@ -6978,3 +6978,1786 @@ document.addEventListener(
     );
   }
 );
+/* ============================================================
+   MEMORIA GRÁFICA · RECORRIDO 2026
+   BLOQUE INDEPENDIENTE
+
+   PEGAR AL FINAL DE assets/js/script.js
+
+   NO reemplaza:
+   - Memoria Gráfica histórica
+   - Carrusel histórico
+   - Playeras
+   - Mapa
+   - Scroll
+   - Lightbox actual
+
+   Agrega:
+   - Botón 2026
+   - Carrusel independiente con 100 fotografías
+   - Flechas
+   - Arrastre con mouse
+   - Swipe móvil
+   - Rueda en PC
+   - Apertura de fotografía en el MISMO lightbox actual
+   ============================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const section =
+    document.getElementById("galeria");
+
+  if (!section) {
+    return;
+  }
+
+
+  /* Evita duplicarlo si por error se pega dos veces */
+
+  if (
+    document.getElementById(
+      "mg2026Toggle"
+    )
+  ) {
+    return;
+  }
+
+
+  const wrap =
+    section.querySelector(
+      ".wrap"
+    );
+
+  const lead =
+    section.querySelector(
+      ".section-lead"
+    );
+
+  const originalPanels =
+    section.querySelector(
+      ".gallery-panels"
+    );
+
+
+  if (
+    !wrap ||
+    !lead ||
+    !originalPanels
+  ) {
+    return;
+  }
+
+
+
+  /* ============================================================
+     ELEMENTOS ACTUALES DE LA MEMORIA GRÁFICA
+     ============================================================ */
+
+  const originalHint =
+    section.querySelector(
+      ".gallery-depth-hint"
+    );
+
+  const originalControls =
+    section.querySelector(
+      ".gallery-depth-controls"
+    );
+
+  const originalProgress =
+    section.querySelector(
+      ".gallery-depth-progress"
+    );
+
+
+
+  /* ============================================================
+     RECORRIDO 2026
+     Carpetas verificadas directamente del ZIP.
+
+     TOTAL: 100 fotografías WEBP
+     ============================================================ */
+
+  const grupos2026 = [
+
+    {
+      carpeta:
+        "Acultzingo recibe el legado de la Bandera Siera",
+
+      titulo:
+        "Acultzingo recibe el legado de la Bandera Siera",
+
+      total:
+        8
+    },
+
+
+    {
+      carpeta:
+        "Camerino Z. Mendoza se une al recorrido de nuestra historia",
+
+      titulo:
+        "Camerino Z. Mendoza se une al recorrido de nuestra historia",
+
+      total:
+        7
+    },
+
+
+    {
+      carpeta:
+        "Huiloapan se suma al latir histórico de la Bandera Siera",
+
+      titulo:
+        "Huiloapan se suma al latir histórico de la Bandera Siera",
+
+      total:
+        7
+    },
+
+
+    {
+      carpeta:
+        "La Bandera Siera llevará su legado hasta Tequila",
+
+      titulo:
+        "La BANDERA SIERA llevará su legado hasta Tequila",
+
+      total:
+        6
+    },
+
+
+    {
+      carpeta:
+        "Los Reyes, la tradición será parte del recorrido",
+
+      titulo:
+        "Los Reyes · La tradición será parte del recorrido",
+
+      total:
+        2
+    },
+
+
+    {
+      carpeta:
+        "Maltrata se suma al camino de la Bandera Siera",
+
+      titulo:
+        "Maltrata se suma al camino de la BANDERA SIERA",
+
+      total:
+        4
+    },
+
+
+    {
+      carpeta:
+        "Nogales es parte del legado de la Bandera Siera",
+
+      titulo:
+        "Nogales es parte del legado de la BANDERA SIERA",
+
+      total:
+        7
+    },
+
+
+    {
+      carpeta:
+        "Orizaba recibe una historia que marcó el camino de la libertad",
+
+      titulo:
+        "Orizaba recibe una historia que marcó el camino de la libertad",
+
+      total:
+        8
+    },
+
+
+    {
+      carpeta:
+        "Rafael Delgado recibe el legado de la Bandera Siera",
+
+      titulo:
+        "Rafael Delgado recibe el legado de la BANDERA SIERA",
+
+      total:
+        4
+    },
+
+
+    {
+      carpeta:
+        "Recibimos con orgullo a  Xochiojca, Amatepec, El Porvenir, Comalapa, Piedras Blancas y Zomajapa",
+
+      titulo:
+        "Xochiojca, Amatepec, El Porvenir, Comalapa, Piedras Blancas y Zomajapa",
+
+      total:
+        3
+    },
+
+
+    {
+      carpeta:
+        "Río Blanco   Una bandera histórica llegará",
+
+      titulo:
+        "Río Blanco · Una bandera histórica llegará",
+
+      total:
+        5
+    },
+
+
+    {
+      carpeta:
+        "San Andrés Tenejapan se une al eco de la historia",
+
+      titulo:
+        "San Andrés Tenejapan se une al eco de la historia",
+
+      total:
+        4
+    },
+
+
+    {
+      carpeta:
+        "Tehuacán recibe la historia de la Bandera Siera",
+
+      titulo:
+        "Tehuacán recibe la historia de la BANDERA SIERA",
+
+      total:
+        8
+    },
+
+
+    {
+      carpeta:
+        "Tlilapan será parte de una historia que camina con orgullo",
+
+      titulo:
+        "Tlilapan será parte de una historia que camina con orgullo",
+
+      total:
+        5
+    },
+
+
+    {
+      carpeta:
+        "grito 15 se septiembre ZONGOLICA",
+
+      titulo:
+        "Grito del 15 de septiembre · Zongolica",
+
+      total:
+        9
+    },
+
+
+    {
+      carpeta:
+        "izamiento de nuestra bandera palacion municipal",
+
+      titulo:
+        "Izamiento de nuestra bandera · Palacio Municipal",
+
+      total:
+        3
+    },
+
+
+    {
+      carpeta:
+        "¡Recibimos con alegría a las niñas y niños de los Clubs de COMUDE",
+
+      titulo:
+        "Niñas y niños de los Clubs de COMUDE",
+
+      total:
+        4
+    },
+
+
+    {
+      carpeta:
+        "¡Recibimos con orgullo a Mixtla de Altamirano",
+
+      titulo:
+        "Mixtla de Altamirano",
+
+      total:
+        6
+    }
+
+  ];
+
+
+
+  const totalFotos =
+    grupos2026.reduce(
+      (suma, grupo) =>
+        suma + grupo.total,
+      0
+    );
+
+
+  const base2026 =
+    "assets/images/route/recorrido 2026";
+
+
+
+  /* ============================================================
+     BOTÓN 2026
+     ============================================================ */
+
+  const switcher =
+    document.createElement(
+      "div"
+    );
+
+
+  switcher.className =
+    "mg2026-switch";
+
+
+  const toggle =
+    document.createElement(
+      "button"
+    );
+
+
+  toggle.type =
+    "button";
+
+
+  toggle.id =
+    "mg2026Toggle";
+
+
+  toggle.className =
+    "mg2026-btn";
+
+
+  toggle.textContent =
+    "2026";
+
+
+  toggle.setAttribute(
+    "aria-pressed",
+    "false"
+  );
+
+
+  toggle.setAttribute(
+    "aria-controls",
+    "mg2026Experience"
+  );
+
+
+  switcher.appendChild(
+    toggle
+  );
+
+
+  lead.insertAdjacentElement(
+    "afterend",
+    switcher
+  );
+
+
+
+  /* ============================================================
+     ESTRUCTURA DEL CARRUSEL 2026
+
+     Se utilizan las mismas clases visuales de tu carrusel
+     actual para que mantenga el mismo diseño.
+     ============================================================ */
+
+  const experience =
+    document.createElement(
+      "div"
+    );
+
+
+  experience.id =
+    "mg2026Experience";
+
+
+  experience.className =
+    "mg2026-experience";
+
+
+  experience.hidden =
+    true;
+
+
+  experience.innerHTML = `
+
+    <div class="mg2026-head">
+
+      <span>
+        XXXV RECORRIDO DE LA INSURGENCIA
+      </span>
+
+      <h3>
+        Memoria Gráfica · 2026
+      </h3>
+
+      <p>
+        Registro fotográfico del Recorrido de la
+        BANDERA SIERA 2026.
+      </p>
+
+    </div>
+
+
+    <p
+      class="gallery-hint mg2026-hint">
+    </p>
+
+
+    <div
+      class="gallery-carousel-controls mg2026-controls"
+    >
+
+      <div
+        class="gallery-carousel-status"
+        aria-live="polite"
+      >
+
+        <strong data-mg2026-current>
+          01
+        </strong>
+
+        <span>
+          /
+        </span>
+
+        <span data-mg2026-total>
+          ${String(totalFotos).padStart(2, "0")}
+        </span>
+
+      </div>
+
+
+      <div
+        class="gallery-carousel-actions"
+      >
+
+        <button
+          type="button"
+          class="gallery-carousel-btn"
+          data-mg2026-prev
+          aria-label="Fotografía anterior"
+        >
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="gallery-carousel-btn"
+          data-mg2026-next
+          aria-label="Fotografía siguiente"
+        >
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M9 6l6 6-6 6"/>
+          </svg>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="gallery-panels gallery-depth-experience mg2026-panels"
+    >
+
+      <div
+        class="gallery-grid gallery-depth-track mg2026-track"
+        tabindex="0"
+        role="region"
+        aria-label="Memoria gráfica del recorrido 2026"
+      >
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="gallery-carousel-progress gallery-depth-progress mg2026-progress"
+      aria-hidden="true"
+    >
+
+      <span></span>
+
+    </div>
+
+  `;
+
+
+  originalPanels.insertAdjacentElement(
+    "afterend",
+    experience
+  );
+
+
+
+  /* ============================================================
+     ELEMENTOS DEL NUEVO CARRUSEL
+     ============================================================ */
+
+  const hint =
+    experience.querySelector(
+      ".mg2026-hint"
+    );
+
+
+  const track =
+    experience.querySelector(
+      ".mg2026-track"
+    );
+
+
+  const currentEl =
+    experience.querySelector(
+      "[data-mg2026-current]"
+    );
+
+
+  const prevBtn =
+    experience.querySelector(
+      "[data-mg2026-prev]"
+    );
+
+
+  const nextBtn =
+    experience.querySelector(
+      "[data-mg2026-next]"
+    );
+
+
+  const progressFill =
+    experience.querySelector(
+      ".mg2026-progress span"
+    );
+
+
+  const finePointer =
+    window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    );
+
+
+  const reduceMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+
+
+  hint.textContent =
+    finePointer.matches
+      ? "Desplázate con la rueda, arrastra o usa las flechas para explorar las fotografías de 2026."
+      : "Desliza con el dedo para explorar las fotografías de 2026.";
+
+
+
+  /* ============================================================
+     CREAR LAS 100 FOTOGRAFÍAS
+     ============================================================ */
+
+  let globalIndex =
+    0;
+
+
+  grupos2026.forEach(
+    grupo => {
+
+
+      for (
+        let numero = 1;
+        numero <= grupo.total;
+        numero += 1
+      ) {
+
+
+        globalIndex +=
+          1;
+
+
+        const archivo =
+          `${String(numero).padStart(2, "0")}.webp`;
+
+
+        const ruta =
+          `${base2026}/${grupo.carpeta}/${archivo}`;
+
+
+
+        const figure =
+          document.createElement(
+            "figure"
+          );
+
+
+        figure.className =
+          "gallery-item mg2026-item";
+
+
+        figure.dataset.mg2026Index =
+          String(
+            globalIndex - 1
+          );
+
+
+
+        const img =
+          document.createElement(
+            "img"
+          );
+
+
+        img.src =
+          ruta;
+
+
+        img.alt =
+          `${grupo.titulo} · fotografía ${String(numero).padStart(2, "0")}`;
+
+
+        img.loading =
+          "lazy";
+
+
+        img.decoding =
+          "async";
+
+
+        img.draggable =
+          false;
+
+
+
+        const caption =
+          document.createElement(
+            "figcaption"
+          );
+
+
+        const captionTitle =
+          document.createElement(
+            "strong"
+          );
+
+
+        captionTitle.textContent =
+          grupo.titulo;
+
+
+        const captionNumber =
+          document.createElement(
+            "span"
+          );
+
+
+        captionNumber.textContent =
+          `Recorrido 2026 · ${String(numero).padStart(2, "0")}`;
+
+
+        caption.append(
+          captionTitle,
+          captionNumber
+        );
+
+
+        figure.append(
+          img,
+          caption
+        );
+
+
+        track.appendChild(
+          figure
+        );
+
+      }
+
+    }
+  );
+
+
+
+  const items =
+    Array.from(
+      track.querySelectorAll(
+        ".mg2026-item"
+      )
+    );
+
+
+  const images =
+    Array.from(
+      track.querySelectorAll(
+        ".mg2026-item img"
+      )
+    );
+
+
+
+  /* ============================================================
+     LIGHTBOX PARA LAS FOTOGRAFÍAS 2026
+
+     IMPORTANTE:
+     reutiliza el mismo .lightbox-overlay que ya usa tu página.
+
+     Esto hace que:
+     - las fotos históricas sigan funcionando;
+     - las playeras sigan funcionando;
+     - las fotos 2026 también se puedan presionar;
+     - funcione en PC, iPhone y Android.
+     ============================================================ */
+
+  function abrirLightbox2026(
+    img
+  ) {
+
+
+    const overlay =
+      document.querySelector(
+        ".lightbox-overlay"
+      );
+
+
+    if (
+      !overlay ||
+      !img
+    ) {
+      return;
+    }
+
+
+    const bigImage =
+      overlay.querySelector(
+        "img"
+      );
+
+
+    const closeButton =
+      overlay.querySelector(
+        ".lightbox-close"
+      );
+
+
+    if (!bigImage) {
+      return;
+    }
+
+
+
+    bigImage.src =
+      img.currentSrc ||
+      img.src;
+
+
+    bigImage.alt =
+      img.alt ||
+      "Fotografía ampliada del recorrido 2026";
+
+
+    overlay.classList.add(
+      "is-open"
+    );
+
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+    document.body.style.overflow =
+      "hidden";
+
+
+    requestAnimationFrame(
+      () => {
+
+        closeButton?.focus();
+
+      }
+    );
+
+  }
+
+
+
+  /* ============================================================
+     HACER CLICABLE CADA FOTO 2026
+     ============================================================ */
+
+  images.forEach(
+    img => {
+
+
+      img.style.cursor =
+        "zoom-in";
+
+
+      img.setAttribute(
+        "tabindex",
+        "0"
+      );
+
+
+      img.setAttribute(
+        "role",
+        "button"
+      );
+
+
+      img.setAttribute(
+        "aria-label",
+        `Ampliar imagen: ${img.alt}`
+      );
+
+
+
+      /* CLIC / TAP */
+
+      img.addEventListener(
+        "click",
+        event => {
+
+
+          event.stopPropagation();
+
+
+          abrirLightbox2026(
+            img
+          );
+
+        }
+      );
+
+
+
+      /* TECLADO */
+
+      img.addEventListener(
+        "keydown",
+        event => {
+
+
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+
+
+            event.preventDefault();
+
+
+            abrirLightbox2026(
+              img
+            );
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+
+  /* ============================================================
+     CARRUSEL 2026
+     ============================================================ */
+
+  let activeIndex =
+    0;
+
+
+  let rafId =
+    0;
+
+
+  let dragging =
+    false;
+
+
+  let dragged =
+    false;
+
+
+  let dragStartX =
+    0;
+
+
+  let dragStartScroll =
+    0;
+
+
+
+  function updateCarousel() {
+
+
+    rafId =
+      0;
+
+
+    const viewport =
+      track.getBoundingClientRect();
+
+
+    const center =
+      viewport.left +
+      viewport.width / 2;
+
+
+    let nearest =
+      0;
+
+
+    let nearestDistance =
+      Infinity;
+
+
+
+    items.forEach(
+      (
+        item,
+        index
+      ) => {
+
+
+        const rect =
+          item.getBoundingClientRect();
+
+
+        const itemCenter =
+          rect.left +
+          rect.width / 2;
+
+
+        const signed =
+          (
+            itemCenter -
+            center
+          ) /
+          Math.max(
+            rect.width,
+            1
+          );
+
+
+        const distance =
+          Math.min(
+            1.5,
+            Math.abs(
+              signed
+            )
+          );
+
+
+
+        if (
+          distance <
+          nearestDistance
+        ) {
+
+
+          nearestDistance =
+            distance;
+
+
+          nearest =
+            index;
+
+        }
+
+
+
+        if (
+          !reduceMotion.matches
+        ) {
+
+
+          const scale =
+            1 -
+            Math.min(
+              distance *
+              0.105,
+              0.16
+            );
+
+
+          const lift =
+            Math.min(
+              distance *
+              22,
+              24
+            );
+
+
+          const rotate =
+            Math.max(
+              -8,
+              Math.min(
+                8,
+                signed *
+                -5.5
+              )
+            );
+
+
+          const opacity =
+            1 -
+            Math.min(
+              distance *
+              0.28,
+              0.42
+            );
+
+
+
+          item.style.transform =
+            `perspective(1000px)
+             translateY(${lift}px)
+             rotateY(${rotate}deg)
+             scale(${scale})`;
+
+
+          item.style.opacity =
+            opacity.toFixed(
+              3
+            );
+
+
+          item.style.zIndex =
+            String(
+              100 -
+              Math.round(
+                distance *
+                20
+              )
+            );
+
+
+        } else {
+
+
+          item.style.transform =
+            "";
+
+
+          item.style.opacity =
+            "";
+
+
+          item.style.zIndex =
+            "";
+
+        }
+
+      }
+    );
+
+
+
+    activeIndex =
+      nearest;
+
+
+
+    items.forEach(
+      (
+        item,
+        index
+      ) => {
+
+
+        item.classList.toggle(
+          "is-gallery-active",
+          index === activeIndex
+        );
+
+      }
+    );
+
+
+
+    if (currentEl) {
+
+
+      currentEl.textContent =
+        String(
+          activeIndex + 1
+        ).padStart(
+          2,
+          "0"
+        );
+
+    }
+
+
+
+    const maxScroll =
+      Math.max(
+        1,
+        track.scrollWidth -
+        track.clientWidth
+      );
+
+
+
+    const percentage =
+      Math.max(
+        0,
+        Math.min(
+          100,
+          (
+            track.scrollLeft /
+            maxScroll
+          ) *
+          100
+        )
+      );
+
+
+
+    if (progressFill) {
+
+
+      progressFill.style.width =
+        `${Math.max(
+          2.5,
+          percentage
+        )}%`;
+
+    }
+
+
+
+    if (prevBtn) {
+
+
+      prevBtn.disabled =
+        track.scrollLeft <=
+        3;
+
+    }
+
+
+
+    if (nextBtn) {
+
+
+      nextBtn.disabled =
+        track.scrollLeft >=
+        maxScroll -
+        3;
+
+    }
+
+  }
+
+
+
+  function scheduleUpdate() {
+
+
+    if (!rafId) {
+
+
+      rafId =
+        requestAnimationFrame(
+          updateCarousel
+        );
+
+    }
+
+  }
+
+
+
+  /* ============================================================
+     IR A UNA FOTO
+     ============================================================ */
+
+  function goToItem(
+    index
+  ) {
+
+
+    if (!items.length) {
+      return;
+    }
+
+
+    const safeIndex =
+      Math.max(
+        0,
+        Math.min(
+          items.length -
+          1,
+          index
+        )
+      );
+
+
+    const target =
+      items[
+        safeIndex
+      ];
+
+
+    if (!target) {
+      return;
+    }
+
+
+
+    const left =
+      target.offsetLeft -
+      (
+        track.clientWidth -
+        target.clientWidth
+      ) /
+      2;
+
+
+
+    track.scrollTo({
+
+      left,
+
+      behavior:
+        reduceMotion.matches
+          ? "auto"
+          : "smooth"
+
+    });
+
+  }
+
+
+
+  /* ============================================================
+     FLECHAS
+     ============================================================ */
+
+  prevBtn?.addEventListener(
+    "click",
+    () => {
+
+
+      goToItem(
+        activeIndex -
+        1
+      );
+
+    }
+  );
+
+
+
+  nextBtn?.addEventListener(
+    "click",
+    () => {
+
+
+      goToItem(
+        activeIndex +
+        1
+      );
+
+    }
+  );
+
+
+
+  /* ============================================================
+     ACTUALIZAR AL DESPLAZAR
+     ============================================================ */
+
+  track.addEventListener(
+    "scroll",
+    scheduleUpdate,
+    {
+      passive:
+        true
+    }
+  );
+
+
+
+  /* ============================================================
+     RUEDA DEL MOUSE EN PC
+     ============================================================ */
+
+  track.addEventListener(
+    "wheel",
+    event => {
+
+
+      if (
+        !finePointer.matches
+      ) {
+        return;
+      }
+
+
+
+      const delta =
+        Math.abs(
+          event.deltaY
+        ) >=
+        Math.abs(
+          event.deltaX
+        )
+          ? event.deltaY
+          : event.deltaX;
+
+
+
+      if (!delta) {
+        return;
+      }
+
+
+
+      const maxScroll =
+        track.scrollWidth -
+        track.clientWidth;
+
+
+
+      const canForward =
+        delta > 0 &&
+        track.scrollLeft <
+        maxScroll -
+        2;
+
+
+
+      const canBack =
+        delta < 0 &&
+        track.scrollLeft >
+        2;
+
+
+
+      if (
+        canForward ||
+        canBack
+      ) {
+
+
+        event.preventDefault();
+
+
+        track.scrollLeft +=
+          delta *
+          1.05;
+
+
+        scheduleUpdate();
+
+      }
+
+    },
+    {
+      passive:
+        false
+    }
+  );
+
+
+
+  /* ============================================================
+     ARRASTRAR CON MOUSE EN PC
+     ============================================================ */
+
+  track.addEventListener(
+    "pointerdown",
+    event => {
+
+
+      if (
+        event.pointerType !==
+        "mouse"
+      ) {
+        return;
+      }
+
+
+
+      dragging =
+        true;
+
+
+      dragged =
+        false;
+
+
+      dragStartX =
+        event.clientX;
+
+
+      dragStartScroll =
+        track.scrollLeft;
+
+
+      track.classList.add(
+        "is-grabbing"
+      );
+
+
+      track.setPointerCapture?.(
+        event.pointerId
+      );
+
+    }
+  );
+
+
+
+  track.addEventListener(
+    "pointermove",
+    event => {
+
+
+      if (
+        !dragging ||
+        event.pointerType !==
+        "mouse"
+      ) {
+        return;
+      }
+
+
+
+      const dx =
+        event.clientX -
+        dragStartX;
+
+
+
+      if (
+        Math.abs(
+          dx
+        ) >
+        4
+      ) {
+
+
+        dragged =
+          true;
+
+      }
+
+
+
+      track.scrollLeft =
+        dragStartScroll -
+        dx;
+
+
+      scheduleUpdate();
+
+    }
+  );
+
+
+
+  function stopDrag(
+    event
+  ) {
+
+
+    if (!dragging) {
+      return;
+    }
+
+
+    dragging =
+      false;
+
+
+    track.classList.remove(
+      "is-grabbing"
+    );
+
+
+
+    if (
+      event?.pointerId !=
+      null
+    ) {
+
+
+      track.releasePointerCapture?.(
+        event.pointerId
+      );
+
+    }
+
+  }
+
+
+
+  track.addEventListener(
+    "pointerup",
+    stopDrag
+  );
+
+
+  track.addEventListener(
+    "pointercancel",
+    stopDrag
+  );
+
+
+  track.addEventListener(
+    "pointerleave",
+    event => {
+
+
+      if (
+        dragging &&
+        event.buttons ===
+        0
+      ) {
+
+
+        stopDrag(
+          event
+        );
+
+      }
+
+    }
+  );
+
+
+
+  /* ============================================================
+     MUY IMPORTANTE
+
+     Si arrastras la galería con el mouse,
+     al soltar NO abre accidentalmente la fotografía.
+     ============================================================ */
+
+  track.addEventListener(
+    "click",
+    event => {
+
+
+      if (!dragged) {
+        return;
+      }
+
+
+      event.preventDefault();
+
+
+      event.stopImmediatePropagation();
+
+
+      dragged =
+        false;
+
+    },
+    true
+  );
+
+
+
+  /* ============================================================
+     FLECHAS DEL TECLADO
+     ============================================================ */
+
+  track.addEventListener(
+    "keydown",
+    event => {
+
+
+      if (
+        event.key ===
+        "ArrowRight"
+      ) {
+
+
+        event.preventDefault();
+
+
+        goToItem(
+          activeIndex +
+          1
+        );
+
+      }
+
+
+
+      if (
+        event.key ===
+        "ArrowLeft"
+      ) {
+
+
+        event.preventDefault();
+
+
+        goToItem(
+          activeIndex -
+          1
+        );
+
+      }
+
+    }
+  );
+
+
+
+  window.addEventListener(
+    "resize",
+    scheduleUpdate
+  );
+
+
+
+  /* ============================================================
+     MOSTRAR / OCULTAR MEMORIA HISTÓRICA
+     ============================================================ */
+
+  let showing2026 =
+    false;
+
+
+
+  function setOriginalHidden(
+    hidden
+  ) {
+
+
+    originalPanels.classList.toggle(
+      "mg2026-hidden",
+      hidden
+    );
+
+
+    originalHint?.classList.toggle(
+      "mg2026-hidden",
+      hidden
+    );
+
+
+    originalControls?.classList.toggle(
+      "mg2026-hidden",
+      hidden
+    );
+
+
+    originalProgress?.classList.toggle(
+      "mg2026-hidden",
+      hidden
+    );
+
+  }
+
+
+
+  /* ============================================================
+     BOTÓN 2026
+
+     Primer clic:
+     muestra fotografías 2026.
+
+     Segundo clic:
+     regresa exactamente a la Memoria Gráfica histórica.
+     ============================================================ */
+
+  toggle.addEventListener(
+    "click",
+    () => {
+
+
+      showing2026 =
+        !showing2026;
+
+
+
+      toggle.classList.toggle(
+        "is-active",
+        showing2026
+      );
+
+
+      toggle.setAttribute(
+        "aria-pressed",
+        String(
+          showing2026
+        )
+      );
+
+
+
+      setOriginalHidden(
+        showing2026
+      );
+
+
+      experience.hidden =
+        !showing2026;
+
+
+
+      if (
+        showing2026
+      ) {
+
+
+        requestAnimationFrame(
+          () => {
+
+
+            goToItem(
+              activeIndex
+            );
+
+
+            updateCarousel();
+
+          }
+        );
+
+      }
+
+    }
+  );
+});
